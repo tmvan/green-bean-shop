@@ -1,9 +1,9 @@
 import { Get, Controller, Render } from '@nestjs/common';
 
-@Controller()
-export class AppController {
+@Controller('about')
+export class AboutController {
   @Get()
-  @Render('index')
+  @Render('about')
   root() {
     return { message: 'Hello world!' };
   }
