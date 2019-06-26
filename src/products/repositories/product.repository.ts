@@ -10,24 +10,24 @@ export default class ProductRepository implements IProductRepository {
   }
 
   private nextId(): string {
-    var id = ProductRepository._nextId++;
+    const id = ProductRepository._nextId++;
     return 'product-' + id;
   }
 
   private selectByIdPredicate(productId: string) {
-    return function(value: Product, index: number, obj: Product[]) {
-      return value.id == productId;
+    return (value: Product, index: number, obj: Product[]) => {
+      return value.id === productId;
     };
   }
 
   disable(productId: string): void {
-    var entity = this.selectById(productId);
+    const entity = this.selectById(productId);
 
     entity.disabled = true;
   }
 
   enable(productId: string): void {
-    var entity = this.selectById(productId);
+    const entity = this.selectById(productId);
 
     entity.disabled = false;
   }
@@ -51,7 +51,7 @@ export default class ProductRepository implements IProductRepository {
   }
 
   update(product: Product): void {
-    var entity = this.selectById(product.id);
+    const entity = this.selectById(product.id);
 
     entity.name = product.name;
     entity.description = product.description;
@@ -60,7 +60,7 @@ export default class ProductRepository implements IProductRepository {
   }
 
   delete(productId: string): void {
-    var index = this.collection().findIndex(
+    const index = this.collection().findIndex(
       this.selectByIdPredicate(productId),
     );
 

@@ -1,7 +1,8 @@
-export default abstract class SearchResponse<T> {
+import IPaginatetable from './paginatetable.interface';
+
+export default abstract class SearchResponse<T> implements IPaginatetable {
   private _data: T[];
   private _totalCount: number;
-  private _totalPage: number;
   private _pageIndex: number;
   private _pageSize: number;
 
@@ -15,15 +16,10 @@ export default abstract class SearchResponse<T> {
     this._totalCount = totalCount;
     this._pageIndex = pageIndex;
     this._pageSize = pageSize;
-    this._totalPage = Math.ceil(this._totalCount / this._pageSize);
   }
 
   public get data(): T[] {
     return this._data;
-  }
-
-  public get totalPage(): number {
-    return this._totalPage;
   }
 
   public get pageIndex(): number {

@@ -43,7 +43,7 @@ export default class ProductDto {
   }
 
   public static fromEntity(product: Product): ProductDto {
-    var dto = new ProductDto();
+    const dto = new ProductDto();
 
     dto.id = product.id;
     dto.description = product.description;

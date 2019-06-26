@@ -1,17 +1,15 @@
-import SearchResponse from './search.response';
+import IPaginatetable from './paginatetable.interface';
 
-export default abstract class PagedList<T> {
-  constructor(response: SearchResponse<T>) {
-    this.data = response.data;
-    this.totalCount = response.totalCount;
-    this.totalPage = response.totalPage;
-    this.pageIndex = response.pageIndex;
-    this.pageSize = response.pageSize;
+export default class PagedList<T> implements IPaginatetable {
+  constructor(data: T[], other: IPaginatetable) {
+    this.data = data;
+    this.pageIndex = other.pageIndex;
+    this.pageSize = other.pageSize;
+    this.totalCount = other.totalCount;
   }
 
   public data: T[];
   public totalCount: number;
-  public totalPage: number;
   public pageIndex: number;
   public pageSize: number;
 }

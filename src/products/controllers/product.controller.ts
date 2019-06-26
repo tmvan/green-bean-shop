@@ -27,39 +27,39 @@ export default class ProductController {
   constructor(
     @Inject('PRODUCT_SERVICE')
     private readonly _productService: IProductService,
-  ) {}
+  ) { }
 
   @Get()
   search(
     @Query('p') pageIndex: number,
     @Query('s') pageSize: number,
   ): PagedProductList {
-    var request = new SearchProductRequest();
+    const request = new SearchProductRequest();
 
     request.pageIndex = pageIndex;
     request.pageSize = pageSize;
 
-    var response = this._productService.search(request);
-    var result = new PagedProductList(response);
+    const response = this._productService.search(request);
+    const result = new PagedProductList(response);
 
     return result;
   }
 
   @Get()
   get(@Query('id') productId: string): ProductModel {
-    var request = new GetProductRequest();
+    const request = new GetProductRequest();
 
     request.productId = productId;
 
-    var response = this._productService.get(request);
-    var result = new ProductModel(response.product);
+    const response = this._productService.get(request);
+    const result = new ProductModel(response.product);
 
     return result;
   }
 
   @Post()
   create(@Body() model: CreateProductModel): string {
-    var response = this._productService.create(model.toRequest());
+    const response = this._productService.create(model.toRequest());
     return response.productId;
   }
 
@@ -73,7 +73,7 @@ export default class ProductController {
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
   remove(@Param('id') productId: string) {
-    var request = new RemoveProductRequest();
+    const request = new RemoveProductRequest();
 
     request.productId = productId;
     // Because the product repository doesn't return anything so we can ignore the edit response handle

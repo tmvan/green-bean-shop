@@ -18,16 +18,16 @@ export default class ProductService implements IProductService {
   constructor(
     @Inject('PRODUCT_REPOSITORY')
     private readonly _productRepo: IProductRepository,
-  ) {}
+  ) { }
 
   search(request: SearchProductRequest): SearchProductResponse {
-    var entities = this._productRepo.selectAll(
+    const entities = this._productRepo.selectAll(
       request.offset(),
       request.limit(),
     );
-    var dtos = entities.map(ProductDto.fromEntity);
-    var count = this._productRepo.count();
-    var response = new SearchProductResponse(
+    const dtos = entities.map(ProductDto.fromEntity);
+    const count = this._productRepo.count();
+    const response = new SearchProductResponse(
       dtos,
       count,
       request.pageIndex,
@@ -38,30 +38,30 @@ export default class ProductService implements IProductService {
   }
 
   get(request: GetProductRequest): GetProductResponse {
-    var entity = this._productRepo.selectById(request.productId);
-    var dto = ProductDto.fromEntity(entity);
-    var response = new GetProductResponse();
+    const entity = this._productRepo.selectById(request.productId);
+    const dto = ProductDto.fromEntity(entity);
+    const response = new GetProductResponse();
 
     response.product = dto;
     return response;
   }
 
   create(request: CreateProductRequest): CreateProductResponse {
-    var entity = request.toEntity();
-    var productId = this._productRepo.insert(entity);
-    var response = new CreateProductResponse();
+    const entity = request.toEntity();
+    const productId = this._productRepo.insert(entity);
+    const response = new CreateProductResponse();
 
     response.productId = productId;
     return response;
   }
 
   edit(request: EditProductRequest): EditProductResponse {
-    var entity = this._productRepo.selectById(request.productId);
+    const entity = this._productRepo.selectById(request.productId);
 
     request.editEntity(entity);
     this._productRepo.update(entity);
 
-    var response = new EditProductResponse();
+    const response = new EditProductResponse();
 
     return response;
   }
@@ -69,7 +69,7 @@ export default class ProductService implements IProductService {
   remove(request: RemoveProductRequest): RemoveProductResponse {
     this._productRepo.delete(request.productId);
 
-    var response = new RemoveProductResponse();
+    const response = new RemoveProductResponse();
 
     return response;
   }

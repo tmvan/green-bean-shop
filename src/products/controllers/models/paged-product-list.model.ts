@@ -4,6 +4,8 @@ import SearchProductResponse from 'src/products/services/dto/search-product.resp
 
 export default class PagedProductList extends PagedList<ProductModel> {
   constructor(response: SearchProductResponse) {
-    super(response);
+    const data = response.data.map(x => new ProductModel(x));
+
+    super(data, response);
   }
 }
