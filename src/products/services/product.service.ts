@@ -18,7 +18,7 @@ export default class ProductService implements IProductService {
   constructor(
     @Inject('PRODUCT_REPOSITORY')
     private readonly _productRepo: IProductRepository,
-  ) { }
+  ) {}
 
   search(request: SearchProductRequest): SearchProductResponse {
     const entities = this._productRepo.selectAll(

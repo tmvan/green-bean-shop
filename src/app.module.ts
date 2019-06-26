@@ -8,4 +8,4 @@ import ProductModule from './products/product.module';
   controllers: [HomeController, AboutController],
   providers: [],
 })
-export class AppModule { }
+export class AppModule {}

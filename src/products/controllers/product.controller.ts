@@ -27,7 +27,7 @@ export default class ProductController {
   constructor(
     @Inject('PRODUCT_SERVICE')
     private readonly _productService: IProductService,
-  ) { }
+  ) {}
 
   @Get()
   search(
