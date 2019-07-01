@@ -1,7 +1,12 @@
 import EditProductRequest from 'src/products/services/dto/edit-product.request';
 
 export default class EditProductModel {
-  toRequest(productId: string): EditProductRequest {
+  public name: string;
+  public description: string;
+  public price: number;
+  public disabled: boolean;
+
+  public toRequest(productId: string): EditProductRequest {
     throw new Error('Not implemented');
   }
 }

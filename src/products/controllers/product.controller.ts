@@ -30,6 +30,7 @@ export default class ProductController {
   ) {}
 
   @Get()
+  @HttpCode(HttpStatus.OK)
   search(
     @Query('p') pageIndex: number,
     @Query('s') pageSize: number,
@@ -46,6 +47,7 @@ export default class ProductController {
   }
 
   @Get()
+  @HttpCode(HttpStatus.OK)
   get(@Query('id') productId: string): ProductModel {
     const request = new GetProductRequest();
 
@@ -58,16 +60,21 @@ export default class ProductController {
   }
 
   @Post()
+  @HttpCode(HttpStatus.CREATED)
   create(@Body() model: CreateProductModel): string {
-    const response = this._productService.create(model.toRequest());
+    const request = model.toRequest();
+    const response = this._productService.create(request);
+
     return response.productId;
   }
 
   @Put(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
   edit(@Param('id') productId: string, @Body() model: EditProductModel) {
+    const request = model.toRequest(productId);
+
     // Because the product repository doesn't return anything so we can ignore the edit response handle
-    this._productService.edit(model.toRequest(productId));
+    this._productService.edit(request);
   }
 
   @Delete(':id')
