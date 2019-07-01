@@ -11,15 +11,18 @@ import {
   Delete,
   Injectable,
   Inject,
+  UsePipes,
 } from '@nestjs/common';
 import IProductService from '../services/product.service.interface';
 import PagedProductList from './models/paged-product-list.model';
-import SearchProductRequest from '../services/dto/search-product.request';
 import ProductModel from './models/product.model';
 import GetProductRequest from '../services/dto/get-product.request';
 import CreateProductModel from './models/create-product.model';
 import EditProductModel from './models/edit-product.model';
 import RemoveProductRequest from '../services/dto/remove-product.request';
+import { ValidationPipe } from '../../common/validation.pipe';
+import { SearchProductModel } from './models/search-product.model';
+//import { ParamBindPipe } from '../../common/param-bind.pipe';
 
 @Injectable()
 @Controller('api/products')
@@ -31,14 +34,14 @@ export default class ProductController {
 
   @Get()
   @HttpCode(HttpStatus.OK)
+  @UsePipes(
+    //new ParamBindPipe('pageIndex', 'p'),
+    //new ParamBindPipe('pageSize', 's'),
+    new ValidationPipe())
   search(
-    @Query('p') pageIndex: number,
-    @Query('s') pageSize: number,
+    model: SearchProductModel,
   ): PagedProductList {
-    const request = new SearchProductRequest();
-
-    request.pageIndex = pageIndex;
-    request.pageSize = pageSize;
+    const request = model.toRequest();
 
     const response = this._productService.search(request);
     const result = new PagedProductList(response);
@@ -61,7 +64,7 @@ export default class ProductController {
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  create(@Body() model: CreateProductModel): string {
+  create(@Body(new ValidationPipe()) model: CreateProductModel): string {
     const request = model.toRequest();
     const response = this._productService.create(request);
 
@@ -70,7 +73,7 @@ export default class ProductController {
 
   @Put(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  edit(@Param('id') productId: string, @Body() model: EditProductModel) {
+  edit(@Param('id') productId: string, @Body(new ValidationPipe()) model: EditProductModel) {
     const request = model.toRequest(productId);
 
     // Because the product repository doesn't return anything so we can ignore the edit response handle

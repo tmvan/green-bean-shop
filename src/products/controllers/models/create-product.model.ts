@@ -1,8 +1,17 @@
-import CreateProductRequest from "../../services/dto/create-product.request";
+import CreateProductRequest from '../../services/dto/create-product.request';
+import { IsString, IsInt, IsBoolean } from 'class-validator';
+
 export default class CreateProductModel {
+  @IsString()
   public name: string;
+
+  @IsString()
   public description: string;
+
+  @IsInt()
   public price: number;
+
+  @IsBoolean()
   public disabled: boolean;
 
   public toRequest(): CreateProductRequest {
