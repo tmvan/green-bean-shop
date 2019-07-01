@@ -1,5 +1,10 @@
+
+import { Injectable, Inject } from '@nestjs/common';
+import IProductService from './product.service.interface';
+import IProductRepository from '../repositories/product.repository.interface';
 import SearchProductRequest from './dto/search-product.request';
 import SearchProductResponse from './dto/search-product.response';
+import ProductDto from './dto/product.dto';
 import GetProductRequest from './dto/get-product.request';
 import GetProductResponse from './dto/get-product.response';
 import CreateProductRequest from './dto/create-product.request';
@@ -8,10 +13,6 @@ import EditProductRequest from './dto/edit-product.request';
 import EditProductResponse from './dto/edit-product.response';
 import RemoveProductRequest from './dto/remove-product.request';
 import RemoveProductResponse from './dto/remove-product.response';
-import IProductService from './product.service.interface';
-import IProductRepository from '../repositories/product.repository.interface';
-import ProductDto from './dto/product.dto';
-import { Injectable, Inject } from '@nestjs/common';
 
 @Injectable()
 export default class ProductService implements IProductService {

@@ -15,8 +15,8 @@ import {
 import IProductService from '../services/product.service.interface';
 import PagedProductList from './models/paged-product-list.model';
 import SearchProductRequest from '../services/dto/search-product.request';
-import GetProductRequest from '../services/dto/get-product.request';
 import ProductModel from './models/product.model';
+import GetProductRequest from '../services/dto/get-product.request';
 import CreateProductModel from './models/create-product.model';
 import EditProductModel from './models/edit-product.model';
 import RemoveProductRequest from '../services/dto/remove-product.request';

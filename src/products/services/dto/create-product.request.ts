@@ -6,7 +6,6 @@ export default class CreateProductRequest {
   public price: number;
   public disabled: boolean;
 
-
   public toEntity(): Product {
     const product = new Product();
 

@@ -1,5 +1,4 @@
-import CreateProductRequest from 'src/products/services/dto/create-product.request';
-
+import CreateProductRequest from "../../services/dto/create-product.request";
 export default class CreateProductModel {
   public name: string;
   public description: string;
@@ -13,7 +12,7 @@ export default class CreateProductModel {
     request.description = this.description;
     request.price = this.price;
     request.disabled = this.disabled;
-    
+
     return request;
   }
 }
