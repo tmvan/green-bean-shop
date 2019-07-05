@@ -1,11 +1,11 @@
-import { Injectable, PipeTransform, ArgumentMetadata } from "@nestjs/common";
+import { Injectable, PipeTransform, ArgumentMetadata } from '@nestjs/common';
 
 @Injectable()
-export class ParamBindPipe implements PipeTransform<any>{
+export class ParamBindPipe implements PipeTransform<any> {
   private _memberName: string;
   private _paramName: string;
-  
-  constructor(memberName: string, paramName: string = null){
+
+  constructor(memberName: string, paramName: string = null) {
     this._memberName = memberName;
     this._paramName = paramName || memberName;
   }

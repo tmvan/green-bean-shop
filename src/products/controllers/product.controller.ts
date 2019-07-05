@@ -22,7 +22,7 @@ import EditProductModel from './models/edit-product.model';
 import RemoveProductRequest from '../services/dto/remove-product.request';
 import { ValidationPipe } from '../../common/validation.pipe';
 import { SearchProductModel } from './models/search-product.model';
-//import { ParamBindPipe } from '../../common/param-bind.pipe';
+// import { ParamBindPipe } from '../../common/param-bind.pipe';
 
 @Injectable()
 @Controller('api/products')
@@ -35,12 +35,11 @@ export default class ProductController {
   @Get()
   @HttpCode(HttpStatus.OK)
   @UsePipes(
-    //new ParamBindPipe('pageIndex', 'p'),
-    //new ParamBindPipe('pageSize', 's'),
-    new ValidationPipe())
-  search(
-    model: SearchProductModel,
-  ): PagedProductList {
+    // new ParamBindPipe('pageIndex', 'p'),
+    // new ParamBindPipe('pageSize', 's'),
+    new ValidationPipe(),
+  )
+  search(model: SearchProductModel): PagedProductList {
     const request = model.toRequest();
 
     const response = this._productService.search(request);
@@ -73,7 +72,10 @@ export default class ProductController {
 
   @Put(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  edit(@Param('id') productId: string, @Body(new ValidationPipe()) model: EditProductModel) {
+  edit(
+    @Param('id') productId: string,
+    @Body(new ValidationPipe()) model: EditProductModel,
+  ) {
     const request = model.toRequest(productId);
 
     // Because the product repository doesn't return anything so we can ignore the edit response handle

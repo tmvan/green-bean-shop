@@ -1,4 +1,4 @@
-import ProductDto from "../../services/dto/product.dto";
+import ProductDto from '../../services/dto/product.dto';
 
 export default class ProductModel {
   public productId: string;

@@ -1,4 +1,4 @@
-import EditProductRequest from "../../services/dto/edit-product.request";
+import EditProductRequest from '../../services/dto/edit-product.request';
 
 export default class EditProductModel {
   public name: string;

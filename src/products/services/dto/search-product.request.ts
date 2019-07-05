@@ -1,3 +1,3 @@
-import SearchRequest from "../../../common/search.request";
+import SearchRequest from '../../../common/search.request';
 
-export default class SearchProductRequest extends SearchRequest { }
+export default class SearchProductRequest extends SearchRequest {}

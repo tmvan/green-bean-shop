@@ -1,4 +1,4 @@
-import Product from "../../repositories/entities/product.entity";
+import Product from '../../repositories/entities/product.entity';
 
 export default class CreateProductRequest {
   public name: string;

@@ -1,4 +1,4 @@
-import Product from "../../repositories/entities/product.entity";
+import Product from '../../repositories/entities/product.entity';
 
 export default class ProductDto {
   private _id: string;
