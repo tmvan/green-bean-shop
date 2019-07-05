@@ -1,4 +1,4 @@
-image: Ubuntu
+image: Visual Studio 2019
 
 environment:
   NODEJS_VERSION: "10.15.0"
@@ -21,7 +21,7 @@ before_build:
   - yarn
   - yarn lint
 
-deploy_script:
+after_build:
   - docker login --username=_ --password=$($env:HEROKU_API_KEY) registry.heroku.com
   - docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .
   - docker push ${IMAGE_NAME}:${IMAGE_TAG}
