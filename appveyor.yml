@@ -22,6 +22,6 @@ before_build:
   - yarn lint
 
 after_build:
-  - docker login --username=_ --password=$($env:HEROKU_API_KEY) registry.heroku.com
+  - docker login --username=tmvan.1903@gmail.com --password=$($env:HEROKU_API_KEY) registry.heroku.com
   - docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .
   - docker push ${IMAGE_NAME}:${IMAGE_TAG}
