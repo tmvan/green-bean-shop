@@ -1,3 +1,5 @@
+image: Ubuntu
+
 environment:
   NODEJS_VERSION: "10.15.0"
   HEROKU_API_KEY:
