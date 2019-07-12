@@ -28,3 +28,11 @@ before_build:
 #   - heroku container:login
 #   - heroku container:push web
 #   - heroku container:release web
+
+notifications:
+  - provider: Email
+    to:
+      tmvan.1903@gmail.com
+    on_build_success: true
+    on_build_failure: true
+    on_build_status_changed: true

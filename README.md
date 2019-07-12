@@ -1,5 +1,7 @@
 ## Description
 
+[![Build status](https://ci.appveyor.com/api/projects/status/0faogmj4i13wrtdc?svg=true)](https://ci.appveyor.com/project/tmvan/green-bean-shop)
+
 3-Tier application. Powered by TypeScripts.
 
 ## Installation
