@@ -9,8 +9,8 @@ FROM node:10-alpine
 WORKDIR /app
 COPY package*.json .
 RUN npm install
-COPY --from=build-env /app/dist .
+COPY --from=build-env /app/dist ./bin
 COPY views ./views
-COPY public .
+COPY public ./public
 
-ENTRYPOINT [ "node", "main.js" ]
+ENTRYPOINT [ "node", "bin/main.js" ]
