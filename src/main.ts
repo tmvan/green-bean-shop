@@ -6,7 +6,7 @@ import { Logger } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
-  const path = resolve(dirname(''))
+  const path = resolve(dirname(''));
 
   app.useStaticAssets(join(path, 'public'));
   app.setBaseViewsDir(join(path, 'views'));
