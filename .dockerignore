@@ -1,0 +1,15 @@
+.vscode
+.git
+.gitignore
+.prettierrc
+appveyor.yml
+
+dist
+node_modules
+LICENSE
+VERSION
+README.md
+Changelog.md
+Makefile
+docker-compose.yml
+docs

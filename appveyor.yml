@@ -2,10 +2,12 @@ image: Visual Studio 2017
 
 environment:
   NODEJS_VERSION: "10.15.0"
-  HEROKU_API_KEY:
-    secure: 1lPeSjPcA6p/DitsGAWrS7C6sWAleieEmoS4Lmg7DwjVYYEfQD6iK2aVvLA0nO5Z
-  IMAGE_NAME: registry.heroku.com/gbs
-  IMAGE_TAG: dev
+  # HEROKU_LOGIN: tmvan.1903@gmail.com
+  # HEROKU_APP_NAME: green-bean-shop
+  # HEROKU_API_KEY:
+  #   secure: 8KnabZ+MuT/v+wYSzbPPNELYX5ZZxNhfRLv01rEwkvjHZm6ejJiEbPYAKfHZ1fvz
+  # IMAGE_NAME: registry.heroku.com/gbs
+  # IMAGE_TAG: dev
 
 cache:
  - "%LOCALAPPDATA%\\Yarn"
@@ -21,7 +23,8 @@ before_build:
   - yarn
   - yarn lint
 
-after_build:
-  - docker login --username=tmvan.1903@gmail.com --password=$($env:HEROKU_API_KEY) registry.heroku.com
-  - docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .
-  - docker push ${IMAGE_NAME}:${IMAGE_TAG}
+# after_build:
+#   - heroku login
+#   - heroku container:login
+#   - heroku container:push web
+#   - heroku container:release web
